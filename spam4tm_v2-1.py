@@ -8,8 +8,8 @@
 
 import requests
 from colorama import Back, Fore, init
-import json
-import time
+# import json
+# import time
 from threading import Thread
 
 init(autoreset=True)
@@ -27,7 +27,7 @@ phone_num = [] # Для будущих обновлений.
 print("\n\n")
 
 
-phones = int(input(Back.RED + "Введите номер: "))
+phones = [int(i) for i in input(Back.RED + "Введите номер(а) через запятую: ").split(',')]
 print()
 tries = int(input(Back.GREEN + "Введите кол-во кругов: "))
 
@@ -36,7 +36,7 @@ print("\n\n")
 numbers = 0
 
 print(""" 
-                          _   _             _    
+			  _   _             _    
 \t\t     /\  | | | |           | |   
 \t\t    /  \ | |_| |_ __ _  ___| | __
 \t\t   / /\ \| __| __/ _` |/ __| |/ /
@@ -100,6 +100,7 @@ def spam(phones):
         
         
 for i in range(tries):
-	th = Thread(target=spam, args=(phones, ))
-	th.start()
+	for phone in phones:
+		th = Thread(target=spam, args=(phone, ))
+		th.start()
 		
