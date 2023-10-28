@@ -1,3 +1,4 @@
+# Для запуска на виртуальной машине
 # !pip install requests
 # !pip install colorama
 
